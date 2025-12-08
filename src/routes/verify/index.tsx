@@ -1,6 +1,6 @@
 // src/routes/verify/index.tsx
 import { component$, useSignal } from '@builder.io/qwik';
-import './verify.css'; // 引入外部样式
+import './verify.css?inline'; // 引入外部样式
 
 export default component$(() => {
   const isLogin = useSignal(true);
