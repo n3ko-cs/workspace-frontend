@@ -57,13 +57,11 @@ export default component$(() => {
             {/* 登录 */}
             <form class="form login" preventdefault:submit>
               <div class="input-group">
-                <label>用户名</label>
-                <input type="text" required />
+                <input type="text" required placeholder='用户名'/>
               </div>
 
               <div class="input-group">
-                <label>密码</label>
-                <input type="password" required />
+                <input type="password" required placeholder='密码'/>
               </div>
 
               <button class="submit" type="submit">登录</button>
@@ -72,26 +70,22 @@ export default component$(() => {
             {/* 注册 */}
             <form class="form register" preventdefault:submit>
               <div class="input-group">
-                <label>用户名</label>
-                <input type="text" required />
+                <input type="text" required placeholder='用户名'/>
               </div>
 
               <div class="input-group">
-                <label>邮箱</label>
-                <input type="email" required />
+                <input type="email" required placeholder='邮箱'/>
               </div>
 
               <div class="input-group code-row">
-                <label>验证码</label>
-                <input type="text" required />
+                <input type="text" required placeholder='验证码'/>
                 <button type="button" class="code-btn">
                   获取验证码
                 </button>
               </div>
 
               <div class="input-group">
-                <label>密码</label>
-                <input type="password" required />
+                <input type="password" required placeholder='密码'/>
               </div>
 
               <button class="submit" type="submit">注册</button>

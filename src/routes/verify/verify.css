@@ -128,29 +128,6 @@
   border-color: #38bdf8;
 }
 
-/* 悬浮标签 */
-.input-group label {
-  position: absolute;
-  left: 14px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 13px;
-  color: #64748b;
-  pointer-events: none;
-  transition: 0.2s ease;
-  background: transparent;
-}
-
-.input-group input:focus + label,
-.input-group input:not(:placeholder-shown) + label {
-  top: -8px;
-  font-size: 11px;
-  color: #7dd3fc;
-  background: rgba(15, 23, 42, 0.9);
-  padding: 0 6px;
-  border-radius: 6px;
-}
-
 /* 验证码布局 */
 .code-row {
   gap: 10px;
