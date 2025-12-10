@@ -1,0 +1,91 @@
+/* src/routes/department/department.css */
+
+.department-overview {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.department-overview h1 {
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin: 4rem auto 3rem auto;
+  color: #1e293b;
+  max-width: 800px;
+}
+
+.department-block {
+  width: 100%;
+  padding: 4rem 1.5rem;
+}
+
+.department-block.planning-bg { background-color: #f0f5ff; }
+.department-block.performance-bg { background-color: #fdf2f8; }
+.department-block.tech-bg { background-color: #f0f9ff; }
+.department-block.promotion-bg { background-color: #f0fdf4; }
+
+.department-block-content {
+  max-width: 896px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.department-block h2 {
+  font-size: 1.875rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #1e293b;
+}
+
+@media (min-width: 768px) {
+  .department-block h2 {
+    font-size: 2.25rem;
+  }
+}
+
+.department-block p {
+  font-size: 1.125rem;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 1.5rem;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ✨ 精致的链接动画 */
+.department-link {
+  position: relative;
+  display: inline-block;
+  color: #4f46e9;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.25rem 0;
+  font-size: 1.05rem;
+  transition: color 0.3s ease;
+}
+
+.department-link::after {
+  content: " →";
+  position: absolute;
+  left: 100%;
+  opacity: 0;
+  transform: translateX(-10px);
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease;
+}
+
+.department-link:hover {
+  color: #4338ca;
+}
+
+.department-link:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* 可选：添加轻微上浮效果 */
+.department-link:hover {
+  transform: translateY(-1px);
+}
