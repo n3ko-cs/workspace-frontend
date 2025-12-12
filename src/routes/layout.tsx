@@ -6,8 +6,7 @@ import {
   $,
 } from '@builder.io/qwik';
 import { Slot } from '@builder.io/qwik';
-
-import './styles.css?inline';
+import './layout.css';
 
 export default component$(() => {
   // 控制主内容区是否显示动画
@@ -28,7 +27,7 @@ export default component$(() => {
   return (
     <div class="app-layout">
       <header class="header">
-        <div class="logo">XXX</div>
+        <div class="logo">NavPro</div>
         <nav class="nav">
           <a href="/">首页</a>
           <a href="/department">部门</a>
@@ -48,8 +47,11 @@ export default component$(() => {
       </main>
 
       <footer class="footer">
-        © 2025 XXX. All rights reserved.
+        © 2025 NavPro. All rights reserved.
       </footer>
     </div>
   );
 });
+
+
+
