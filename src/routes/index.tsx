@@ -147,7 +147,18 @@ export default component$(() => {
                 <input type="email" id="email" placeholder="请输入您的邮箱" />
               </div>
               <div class="form-group">
-                <label for="department">意向部门</label>
+                <label for="department">第一意向部门</label>
+                <select id="department">
+                  <option value="">请选择意向部门</option>
+                  <option value="planning">策划部</option>
+                  <option value="tech">技术部</option>
+                  <option value="promotion">宣传部</option>
+                  <option value="performance">演艺部</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="department">第二意向部门</label>
                 <select id="department">
                   <option value="">请选择意向部门</option>
                   <option value="planning">策划部</option>
