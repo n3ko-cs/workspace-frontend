@@ -4,27 +4,33 @@
   justify-content: center;
   align-items: center;
   background:
-    linear-gradient(rgba(20,10,40,0.55), rgba(20,10,40,0.85)),
-    url('/images/gal-bg-light.png') center/cover no-repeat;
+    linear-gradient(rgba(20, 10, 40, 0.55), rgba(20, 10, 40, 0.85)),
+    url("/images/gal-bg-light.png") center/cover no-repeat;
 }
 
 .auth-card {
   width: 400px;
   padding: 36px 32px 32px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.15);
+  box-shadow:
+    0 20px 40px rgba(0, 0, 0, 0.45),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+  min-height: 500px; /* 设置最小高度防止内容抖动 */
+  overflow: hidden;
 }
 
 .auth-illustration {
   width: 80px;
   height: 80px;
   margin-bottom: 12px;
+  transition: all 0.3s ease;
 }
 
 .auth-illustration img {
@@ -39,15 +45,7 @@
   margin-bottom: 12px;
   color: #fff;
   letter-spacing: 2px;
-}
-
-.fade-text {
-  animation: fadeInText 0.4s ease;
-}
-
-@keyframes fadeInText {
-  from { opacity: 0; transform: translateY(8px); }
-  to { opacity: 1; transform: translateY(0); }
+  transition: all 0.3s ease;
 }
 
 .auth-form {
@@ -55,28 +53,21 @@
   display: flex;
   flex-direction: column;
   gap: 14px;
-}
-
-.fade-form {
-  animation: fadeInForm 0.35s ease;
-}
-
-@keyframes fadeInForm {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  transition: all 0.3s ease;
 }
 
 .auth-form input {
   padding: 10px 14px;
   border-radius: 10px;
   border: none;
-  background: rgba(255,255,255,0.85);
+  background: rgba(255, 255, 255, 0.85);
   font-size: 0.95rem;
   outline: none;
+  transition: all 0.3s ease;
 }
 
 .auth-form input:focus {
-  box-shadow: 0 0 0 2px rgba(180,150,255,0.6);
+  box-shadow: 0 0 0 2px rgba(180, 150, 255, 0.6);
 }
 
 .auth-btn {
@@ -89,13 +80,15 @@
   letter-spacing: 2px;
   color: #fff;
   background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  box-shadow: 0 10px 24px rgba(0,0,0,0.35);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .auth-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(0,0,0,0.45);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
 }
 
 .auth-switch {
@@ -103,6 +96,7 @@
   text-align: center;
   color: #ddd;
   font-size: 0.85rem;
+  transition: all 0.3s ease;
 }
 
 .auth-switch span {
@@ -114,6 +108,7 @@
   margin-top: 12px;
   text-align: center;
   font-size: 0.9rem;
+  transition: all 0.3s ease;
 }
 
 .auth-message.success {
@@ -131,9 +126,10 @@
   color: #bbb;
   font-size: 0.85rem;
   text-decoration: none;
+  transition: all 0.3s ease;
 }
 
-/* 情绪文字打字机效果 */
+/* 更新：动漫风格打字机效果 */
 .mood-text {
   color: #ffd6ff;
   font-size: 0.85rem;
@@ -142,10 +138,100 @@
   white-space: pre-wrap;
   overflow: hidden;
   border-right: 2px solid #ffd6ff;
+  position: relative;
+  line-height: 1.4;
+  transition: all 0.3s ease;
+}
+
+.mood-text::after {
+  content: "";
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: #ffd6ff;
   animation: blink-cursor 0.8s steps(1) infinite;
 }
 
 @keyframes blink-cursor {
-  0%, 50% { border-color: #ffd6ff; }
-  51%, 100% { border-color: transparent; }
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 新增：动漫风格切换动画 */
+.fade-out {
+  animation: fadeOut 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8) rotateY(90deg);
+  }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+  opacity: 0;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.8) rotateY(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+/* 添加弹跳效果增强动漫感 */
+@keyframes bounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.3) translateZ(0);
+  }
+  50% {
+    transform: scale(1.05) translateZ(0);
+  }
+  70% {
+    transform: scale(0.9) translateZ(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateZ(0);
+  }
+}
+
+/* 添加轻微摇摆效果 */
+@keyframes swingIn {
+  0% {
+    opacity: 0;
+    transform: rotate(5deg) translateX(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0) translateX(0);
+  }
+}
+
+/* 注册表单的额外动画 */
+.register {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.login {
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
 }

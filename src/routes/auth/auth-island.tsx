@@ -1,0 +1,74 @@
+import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
+import { Form, Link } from "@builder.io/qwik-city";
+import { useTyping } from "./use-typing";
+import CharIcon from "~/media/images/char-icon.png?jsx";
+
+export const AuthIsland = component$(() => {
+  const mode = useSignal<"login" | "register">("login");
+  const animation = useSignal("");
+  const fullText = useSignal("欢迎回来，快去登录吧~");
+
+  const typing = useTyping(fullText);
+
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(() => {
+    typing.start$();
+  });
+
+  const switchMode$ = $(() => {
+    typing.stop$();
+    animation.value = "fade-out";
+
+    setTimeout(() => {
+      mode.value = mode.value === "login" ? "register" : "login";
+      fullText.value =
+        mode.value === "login" ? "欢迎回来，快去登录吧~" : "快来加入我们吧~";
+
+      animation.value = "fade-in";
+      typing.start$();
+    }, 150);
+  });
+
+  return (
+    <>
+      <div class="auth-illustration">
+        <CharIcon />
+      </div>
+
+      <h1 class={`auth-title ${animation.value}`}>
+        {mode.value === "login" ? "欢迎回来" : "加入 XXX 动漫社"}
+      </h1>
+
+      <p class="mood-text">{typing.text.value}</p>
+
+      <Form class={`auth-form ${mode.value}`}>
+        <input type="hidden" name="mode" value={mode.value} />
+        <input name="username" required placeholder="用户名" />
+        <input type="password" name="password" required placeholder="密码" />
+
+        {mode.value === "register" && (
+          <input
+            name="confirm"
+            type="password"
+            required
+            placeholder="确认密码"
+          />
+        )}
+
+        <button class="auth-btn">
+          {mode.value === "login" ? "登录" : "注册"}
+        </button>
+      </Form>
+
+      <div class="auth-switch">
+        <span onClick$={switchMode$}>
+          {mode.value === "login" ? "还没有账号？注册" : "已有账号？登录"}
+        </span>
+      </div>
+
+      <Link href="/" class="auth-back">
+        ← 返回首页
+      </Link>
+    </>
+  );
+});

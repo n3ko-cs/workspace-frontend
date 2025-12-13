@@ -2,7 +2,7 @@
 // src/routes/index.tsx
 // ================================
 import { component$ } from "@builder.io/qwik";
-import { Navbar } from "../components/Navbar";
+import { Navbar } from "../components/navbar/Navbar";
 
 export default component$(() => {
   return (

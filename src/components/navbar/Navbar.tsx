@@ -1,6 +1,6 @@
 import { component$, useSignal, $ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
-import './navbar.css'
+import "./navbar.css";
 
 export const Navbar = component$(() => {
   // 当前展开的下拉菜单
