@@ -3,14 +3,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(rgba(20,10,40,0.55), rgba(20,10,40,0.85)), url('/images/gal-bg-login.jpg') center/cover no-repeat;
+  background: linear-gradient(rgba(20,10,40,0.6), rgba(20,10,40,0.85)), url('/images/gal-bg.jpg') center/cover no-repeat;
 }
 
 .auth-card {
-  width: 360px;
+  width: 380px;
   padding: 36px 32px 32px;
   border-radius: 20px;
-  background: rgba(255,255,255,0.12);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(14px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.45), inset 0 0 0 1px rgba(255,255,255,0.15);
 }
@@ -38,6 +38,10 @@
   outline: none;
 }
 
+.auth-form input:focus {
+  box-shadow: 0 0 0 2px rgba(180,150,255,0.6);
+}
+
 .auth-btn {
   margin-top: 10px;
   padding: 12px;
@@ -49,6 +53,12 @@
   color: #fff;
   background: linear-gradient(135deg, #a18cd1, #fbc2eb);
   box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0,0,0,0.45);
 }
 
 .auth-switch {
@@ -61,4 +71,18 @@
 .auth-switch span {
   color: #ffccff;
   cursor: pointer;
+}
+
+.auth-message {
+  margin-top: 12px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.auth-message.success {
+  color: #aaffaa;
+}
+
+.auth-message.error {
+  color: #ff7777;
 }
