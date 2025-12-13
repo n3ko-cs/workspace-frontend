@@ -1,26 +1,22 @@
 import { component$, useSignal, $ } from '@builder.io/qwik';
-import { Form, routeAction$ } from '@builder.io/qwik-city';
+import { Form, routeAction$, Link } from '@builder.io/qwik-city';
 import './auth.css'
 
 export const useAuthAction = routeAction$(async (data) => {
   const { mode, username, password, confirm } = data as any;
 
   if (mode === 'register') {
-    // 简单模拟注册逻辑
-    if (password !== confirm) {
-      return { mode, success: false, message: '密码不一致' };
-    }
+    if (password !== confirm) return { mode, success: false, message: '密码不一致' };
     return { mode, success: true, message: '注册成功！' };
   }
 
-  // 模拟登录逻辑
   if (username && password) {
     return {
       mode,
       success: true,
       username,
       department: '技术部',
-      role: '部长', // 可替换为动态权限
+      role: '部长',
     };
   }
 
@@ -30,19 +26,28 @@ export const useAuthAction = routeAction$(async (data) => {
 export default component$(() => {
   const modeSig = useSignal<'login' | 'register'>('login');
   const action = useAuthAction();
+  const moodText = useSignal<string>('准备开始今天的冒险吧~');
 
   const switchMode$ = $(() => {
     modeSig.value = modeSig.value === 'login' ? 'register' : 'login';
+    moodText.value = modeSig.value === 'login' ? '欢迎回来，快去登录吧~' : '快来加入我们吧~';
   });
 
   return (
     <div class="auth-bg">
       <div class="auth-card">
-        <h1 class="auth-title">
+        {/* 小插画 */}
+        <div class="auth-illustration">
+          <img src="/images/char-icon.png" alt="人物插画" />
+        </div>
+
+        <h1 class="auth-title fade-text">
           {modeSig.value === 'login' ? '欢迎回来' : '加入 XXX 动漫社'}
         </h1>
 
-        <Form action={action} class="auth-form">
+        <p class="mood-text">{moodText.value}</p>
+
+        <Form action={action} class={`auth-form fade-form ${modeSig.value}`}>
           <input type="hidden" name="mode" value={modeSig.value} />
 
           <input name="username" placeholder="用户名" required />
@@ -50,7 +55,6 @@ export default component$(() => {
           {modeSig.value === 'register' && (
             <input name="confirm" type="password" placeholder="确认密码" required />
           )}
-
           <button type="submit" class="auth-btn">
             {modeSig.value === 'login' ? '登录' : '注册'}
           </button>
@@ -66,7 +70,7 @@ export default component$(() => {
 
         {action.value && action.value.success && modeSig.value === 'login' && (
           <p class="auth-message success">
-            登录成功！进入 <a href="/member">成员中心</a>
+            登录成功！进入 <Link href="/member">成员中心</Link>
           </p>
         )}
 
@@ -77,6 +81,8 @@ export default component$(() => {
             <span onClick$={switchMode$}>已有账号？登录</span>
           )}
         </div>
+
+        <Link href="/" class="auth-back">← 返回首页</Link>
       </div>
     </div>
   );
