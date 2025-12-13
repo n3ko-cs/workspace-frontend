@@ -1,0 +1,62 @@
+/* =========================
+   Layout 基础结构
+========================= */
+
+.app-shell {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-container {
+  flex: 1;
+  position: relative;
+}
+
+/* =========================
+   页面过渡动画
+========================= */
+
+.page-container.forward {
+  animation: slide-in-right 240ms ease;
+}
+
+.page-container.back {
+  animation: slide-in-left 240ms ease;
+}
+
+/* =========================
+   prefers-reduced-motion
+========================= */
+
+@media (prefers-reduced-motion: reduce) {
+  .page-container {
+    animation: none !important;
+  }
+}
+
+/* =========================
+   Keyframes
+========================= */
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

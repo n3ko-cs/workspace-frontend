@@ -3,7 +3,6 @@
 // ================================
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
-import { Navbar } from "../../components/navbar/Navbar";
 
 export const useMemberInfo = routeLoader$(async () => {
   // mock：实际应从 session / cookie 中读取
@@ -25,8 +24,6 @@ export default component$(() => {
 
   return (
     <>
-      <Navbar />
-      <main class="container">
         <h1>成员中心</h1>
         <p>
           <strong>用户名：</strong>
@@ -49,7 +46,6 @@ export default component$(() => {
             ))}
           </ul>
         </section>
-      </main>
     </>
   );
 });
