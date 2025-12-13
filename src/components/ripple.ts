@@ -1,4 +1,4 @@
-import { $, QRL } from '@builder.io/qwik';
+import { $ } from '@builder.io/qwik';
 
 export const ripple$ = $((ev: MouseEvent) => {
   const button = ev.currentTarget as HTMLElement;

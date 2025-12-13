@@ -1,6 +1,4 @@
 import { component$, useSignal, useVisibleTask$, $ } from '@builder.io/qwik';
-import { useNavigate } from '@builder.io/qwik-city';
-import { ripple$ } from '../../components/ripple';
 import './verify.css';
 
 export default component$(() => {
@@ -96,12 +94,12 @@ export default component$(() => {
             <form class="auth-form login-form" onSubmit$={onLogin} noValidate>
               <div class="input-field">
                 <input id="login-user" name="username" type="text" placeholder=" " required autoComplete="username" />
-                <label htmlFor="login-user">用户名或邮箱</label>
+                <label for="login-user">用户名或邮箱</label>
               </div>
 
               <div class="input-field">
                 <input id="login-pass" name="password" type="password" placeholder=" " required autoComplete="current-password" />
-                <label htmlFor="login-pass">密码</label>
+                <label for="login-pass">密码</label>
               </div>
 
               <div class="form-footer">
@@ -118,17 +116,17 @@ export default component$(() => {
             <form class="auth-form register-form" onSubmit$={onRegister} noValidate>
               <div class="input-field">
                 <input id="reg-name" name="reg_name" type="text" placeholder=" " required autoComplete="username" />
-                <label htmlFor="reg-name">设置唯一用户名</label>
+                <label for="reg-name">设置唯一用户名</label>
               </div>
 
               <div class="input-field">
                 <input id="reg-email" name="reg_email" type="email" placeholder=" " required autoComplete="email" />
-                <label htmlFor="reg-email">常用邮箱地址</label>
+                <label for="reg-email">常用邮箱地址</label>
               </div>
 
               <div class="input-field">
                 <input id="reg-pwd" name="reg_pwd" type="password" placeholder=" " required autoComplete="new-password" />
-                <label htmlFor="reg-pwd">设置安全密码（8+位）</label>
+                <label for="reg-pwd">设置安全密码（8+位）</label>
               </div>
 
               <button type="submit" class="submit-btn">创建账号</button>

@@ -130,7 +130,7 @@ export default component$(() => {
             <div class="join-text">
               <h2 class="section-title">加入突破之旅</h2>
               <p>如果你也是一只渴望突破荆棘束缚的鸟儿，如果你也想在天空中自由翱翔，那么XXX社团就是你起飞的平台。我们等待每一个不甘平凡的灵魂。</p>
-              <ul className="join-benefits">
+              <ul class="join-benefits">
                 <li>获得突破自我、超越极限的机会</li>
                 <li>在团队中找到突破的伙伴与力量</li>
                 <li>体验从荆棘到天空的蜕变过程</li>
@@ -139,15 +139,15 @@ export default component$(() => {
             </div>
             <div class="join-form">
               <div class="form-group">
-                <label htmlFor="name">姓名</label>
+                <label for="name">姓名</label>
                 <input type="text" id="name" placeholder="请输入您的姓名" />
               </div>
               <div class="form-group">
-                <label htmlFor="email">邮箱</label>
+                <label for="email">邮箱</label>
                 <input type="email" id="email" placeholder="请输入您的邮箱" />
               </div>
               <div class="form-group">
-                <label htmlFor="department">意向部门</label>
+                <label for="department">意向部门</label>
                 <select id="department">
                   <option value="">请选择意向部门</option>
                   <option value="planning">策划部</option>
