@@ -1,0 +1,63 @@
+.global-footer {
+  margin-top: auto;
+  padding: 2.5rem 1.5rem 1.5rem;
+  background-color: #0f172a;
+  color: #e5e7eb;
+  font-size: 0.9rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section {
+  min-width: 0;
+}
+
+.footer-title {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-subtitle {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+  color: #c7d2fe;
+}
+
+.footer-text {
+  line-height: 1.6;
+  color: #cbd5e1;
+}
+
+.footer-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links li {
+  margin-bottom: 0.3rem;
+}
+
+.footer-links a {
+  color: #93c5fd;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-bottom {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid #334155;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #94a3b8;
+}
