@@ -1,0 +1,104 @@
+.anime-nav {
+  background: linear-gradient(135deg, #2b1055, #7597de);
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  text-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  list-style: none;
+  align-items: center;
+}
+
+.nav a,
+.dropdown-title {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  padding: 4px 0;
+}
+.nav a::after,
+.dropdown-title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 0;
+  height: 2px;
+  background: #ffccff;
+  transition: width 0.3s ease;
+}
+
+.nav a:hover::after,
+.dropdown-title:hover::after {
+  width: 100%;
+}
+
+/* 下拉菜单 */
+.dropdown {
+  position: relative;
+}
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 14px);
+  left: 50%;
+  transform: translateX(-50%) scale(0.95);
+
+  background: rgba(30, 20, 60, 0.92);
+  backdrop-filter: blur(8px);
+  border-radius: 14px;
+  padding: 12px 0;
+  list-style: none;
+  min-width: 160px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.45);
+  z-index: 10;
+}
+
+/* 鼠标 hover 或 active 类控制显示 */
+.dropdown.active .dropdown-menu {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateX(-50%) scale(1);
+}
+
+.dropdown-menu li {
+  padding: 8px 20px;
+}
+
+.dropdown-menu li a {
+  color: #fff;
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+.dropdown-menu li a:hover {
+  color: #ffccff;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 6px;
+}
+
+.dropdown-menu li a:active {
+  color: #ffd6ff;
+}
