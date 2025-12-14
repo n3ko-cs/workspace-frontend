@@ -7,12 +7,15 @@ import {
 import { Form, Link } from "@builder.io/qwik-city";
 import { useTyping } from "./use-typing";
 import CharIcon from "~/media/images/char-icon.png?jsx";
+import { useLoginAction, useRegisterAction } from './index';
 
 export const AuthIsland = component$(() => {
   const mode = useSignal<"login" | "register">("login");
+  const loginAction = useLoginAction();
+  const registerAction = useRegisterAction();
   const animation = useSignal("");
   const fullText = useSignal("欢迎回来，快去登录吧~");
-
+  const action = mode.value === 'login' ? loginAction : registerAction;
   const typing = useTyping(fullText);
 
   // eslint-disable-next-line qwik/no-use-visible-task
@@ -48,7 +51,7 @@ export const AuthIsland = component$(() => {
 
       <p class="mood-text">{typing.text.value}</p>
 
-      <Form class="auth-form">
+      <Form action={action} class="auth-form">
         <input
           class="auth-input"
           name="username"
@@ -78,6 +81,22 @@ export const AuthIsland = component$(() => {
           {mode.value === "login" ? "登录" : "注册"}
         </button>
       </Form>
+
+      {/* 结果反馈 */}
+      {action.value?.success === false && (
+        <p class="auth-message error">
+          {action.value.message}
+        </p>
+      )}
+
+      {action.value?.success === true && (
+        <p class="auth-message success">
+          {mode.value === 'login'
+            ? '登录成功'
+            : '注册成功'
+          }
+        </p>
+      )}
 
       <div class="auth-switch">
         <span onClick$={switchMode$}>
