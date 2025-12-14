@@ -1,4 +1,9 @@
-import { component$, useSignal, useVisibleTask$, $ } from "@builder.io/qwik";
+import {
+  component$,
+  useSignal,
+  useVisibleTask$,
+  $,
+} from "@builder.io/qwik";
 import { Form, Link } from "@builder.io/qwik-city";
 import { useTyping } from "./use-typing";
 import CharIcon from "~/media/images/char-icon.png?jsx";
@@ -22,15 +27,17 @@ export const AuthIsland = component$(() => {
     setTimeout(() => {
       mode.value = mode.value === "login" ? "register" : "login";
       fullText.value =
-        mode.value === "login" ? "欢迎回来，快去登录吧~" : "快来加入我们吧~";
+        mode.value === "login"
+          ? "欢迎回来，快去登录吧~"
+          : "快来加入我们吧~";
 
       animation.value = "fade-in";
       typing.start$();
-    }, 150);
+    }, 160);
   });
 
   return (
-    <>
+    <div class={`auth-card-inner ${mode.value}`}>
       <div class="auth-illustration">
         <CharIcon />
       </div>
@@ -41,15 +48,27 @@ export const AuthIsland = component$(() => {
 
       <p class="mood-text">{typing.text.value}</p>
 
-      <Form class={`auth-form ${mode.value}`}>
-        <input type="hidden" name="mode" value={mode.value} />
-        <input name="username" required placeholder="用户名" />
-        <input type="password" name="password" required placeholder="密码" />
+      <Form class="auth-form">
+        <input
+          class="auth-input"
+          name="username"
+          required
+          placeholder="用户名"
+        />
+
+        <input
+          class="auth-input"
+          type="password"
+          name="password"
+          required
+          placeholder="密码"
+        />
 
         {mode.value === "register" && (
           <input
-            name="confirm"
+            class="auth-input"
             type="password"
+            name="confirm"
             required
             placeholder="确认密码"
           />
@@ -62,13 +81,15 @@ export const AuthIsland = component$(() => {
 
       <div class="auth-switch">
         <span onClick$={switchMode$}>
-          {mode.value === "login" ? "还没有账号？注册" : "已有账号？登录"}
+          {mode.value === "login"
+            ? "还没有账号？注册"
+            : "已有账号？登录"}
         </span>
       </div>
 
       <Link href="/" class="auth-back">
         ← 返回首页
       </Link>
-    </>
+    </div>
   );
 });

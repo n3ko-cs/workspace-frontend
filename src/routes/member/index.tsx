@@ -23,7 +23,7 @@ export default component$(() => {
   };
 
   return (
-    <>
+    <main class="member-page">
         <h1>成员中心</h1>
         <p>
           <strong>用户名：</strong>
@@ -46,6 +46,6 @@ export default component$(() => {
             ))}
           </ul>
         </section>
-    </>
+    </main>
   );
 });

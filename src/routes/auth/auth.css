@@ -1,3 +1,7 @@
+/* =========================
+   Auth 页面背景
+========================= */
+
 .auth-bg {
   min-height: 100vh;
   display: flex;
@@ -5,8 +9,12 @@
   align-items: center;
   background:
     linear-gradient(rgba(20, 10, 40, 0.55), rgba(20, 10, 40, 0.85)),
-    url("/images/gal-bg-light.png") center/cover no-repeat;
+    url("/images/gal-bg-light.png") center / cover no-repeat;
 }
+
+/* =========================
+   唯一的 Auth 卡片
+========================= */
 
 .auth-card {
   width: 400px;
@@ -17,20 +25,36 @@
   box-shadow:
     0 20px 40px rgba(0, 0, 0, 0.45),
     inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-  min-height: 500px; /* 设置最小高度防止内容抖动 */
-  overflow: hidden;
+
+  transition:
+    box-shadow 300ms ease,
+    transform 300ms ease;
 }
+
+/* =========================
+   内容动画承载层
+========================= */
+
+.auth-card-inner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* =========================
+   插画
+========================= */
 
 .auth-illustration {
   width: 80px;
   height: 80px;
   margin-bottom: 12px;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .auth-illustration img {
@@ -38,6 +62,10 @@
   height: 100%;
   object-fit: contain;
 }
+
+/* =========================
+   标题
+========================= */
 
 .auth-title {
   text-align: center;
@@ -48,88 +76,10 @@
   transition: all 0.3s ease;
 }
 
-.auth-form {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  transition: all 0.3s ease;
-}
+/* =========================
+   心情文字 / 打字机
+========================= */
 
-.auth-form input {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: none;
-  background: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
-  outline: none;
-  transition: all 0.3s ease;
-}
-
-.auth-form input:focus {
-  box-shadow: 0 0 0 2px rgba(180, 150, 255, 0.6);
-}
-
-.auth-btn {
-  margin-top: 10px;
-  padding: 12px;
-  border-radius: 12px;
-  border: none;
-  cursor: pointer;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  color: #fff;
-  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
-  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.auth-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
-}
-
-.auth-switch {
-  margin-top: 18px;
-  text-align: center;
-  color: #ddd;
-  font-size: 0.85rem;
-  transition: all 0.3s ease;
-}
-
-.auth-switch span {
-  color: #ffccff;
-  cursor: pointer;
-}
-
-.auth-message {
-  margin-top: 12px;
-  text-align: center;
-  font-size: 0.9rem;
-  transition: all 0.3s ease;
-}
-
-.auth-message.success {
-  color: #aaffaa;
-}
-
-.auth-message.error {
-  color: #ff7777;
-}
-
-.auth-back {
-  display: block;
-  margin-top: 18px;
-  text-align: center;
-  color: #bbb;
-  font-size: 0.85rem;
-  text-decoration: none;
-  transition: all 0.3s ease;
-}
-
-/* 更新：动漫风格打字机效果 */
 .mood-text {
   color: #ffd6ff;
   font-size: 0.85rem;
@@ -140,7 +90,6 @@
   border-right: 2px solid #ffd6ff;
   position: relative;
   line-height: 1.4;
-  transition: all 0.3s ease;
 }
 
 .mood-text::after {
@@ -165,73 +114,159 @@
   }
 }
 
-/* 新增：动漫风格切换动画 */
-.fade-out {
-  animation: fadeOut 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+/* =========================
+   表单
+========================= */
+
+.auth-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-@keyframes fadeOut {
-  0% {
-    opacity: 1;
-    transform: scale(1) rotateY(0deg);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.8) rotateY(90deg);
-  }
-}
-
-.fade-in {
-  animation: fadeIn 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55) forwards;
+/* 初始态（供 stagger 动画使用） */
+.auth-input,
+.auth-btn {
   opacity: 0;
+  transform: translateY(12px);
 }
 
-@keyframes fadeIn {
-  0% {
+/* =========================
+   输入框
+========================= */
+
+.auth-input {
+  padding: 10px 14px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.85);
+  font-size: 0.95rem;
+  outline: none;
+}
+
+.auth-input:focus {
+  box-shadow: 0 0 0 2px rgba(180, 150, 255, 0.6);
+}
+
+/* =========================
+   按钮
+========================= */
+
+.auth-btn {
+  margin-top: 10px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  color: #fff;
+  background: linear-gradient(135deg, #a18cd1, #fbc2eb);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.35);
+
+  transition:
+    transform 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.auth-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+.auth-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+
+/* =========================
+   stagger 动画（登录）
+========================= */
+
+.auth-card-inner.login .auth-input:nth-of-type(1) {
+  animation: fieldIn 280ms ease forwards;
+  animation-delay: 40ms;
+}
+
+.auth-card-inner.login .auth-input:nth-of-type(2) {
+  animation: fieldIn 280ms ease forwards;
+  animation-delay: 80ms;
+}
+
+.auth-card-inner.login .auth-btn {
+  animation: fieldIn 300ms ease forwards;
+  animation-delay: 140ms;
+}
+
+/* =========================
+   stagger 动画（注册）
+========================= */
+
+.auth-card-inner.register .auth-input:nth-of-type(1) {
+  animation: fieldIn 280ms ease forwards;
+  animation-delay: 40ms;
+}
+
+.auth-card-inner.register .auth-input:nth-of-type(2) {
+  animation: fieldIn 280ms ease forwards;
+  animation-delay: 80ms;
+}
+
+.auth-card-inner.register .auth-input:nth-of-type(3) {
+  animation: fieldIn 280ms ease forwards;
+  animation-delay: 120ms;
+}
+
+.auth-card-inner.register .auth-btn {
+  animation: fieldIn 300ms ease forwards;
+  animation-delay: 180ms;
+}
+
+/* =========================
+   stagger Keyframes
+========================= */
+
+@keyframes fieldIn {
+  from {
     opacity: 0;
-    transform: scale(0.8) rotateY(-90deg);
+    transform: translateY(12px);
   }
-  100% {
+  to {
     opacity: 1;
-    transform: scale(1) rotateY(0deg);
+    transform: none;
   }
 }
 
-/* 添加弹跳效果增强动漫感 */
-@keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3) translateZ(0);
-  }
-  50% {
-    transform: scale(1.05) translateZ(0);
-  }
-  70% {
-    transform: scale(0.9) translateZ(0);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1) translateZ(0);
-  }
+/* =========================
+   切换入口
+========================= */
+
+.auth-switch {
+  margin-top: 18px;
+  text-align: center;
+  color: #ddd;
+  font-size: 0.85rem;
 }
 
-/* 添加轻微摇摆效果 */
-@keyframes swingIn {
-  0% {
-    opacity: 0;
-    transform: rotate(5deg) translateX(30px);
-  }
-  100% {
-    opacity: 1;
-    transform: rotate(0) translateX(0);
-  }
+.auth-switch span {
+  color: #ffccff;
+  cursor: pointer;
 }
 
-/* 注册表单的额外动画 */
-.register {
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+/* =========================
+   返回链接
+========================= */
+
+.auth-back {
+  display: block;
+  margin-top: 18px;
+  text-align: center;
+  color: #bbb;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: color 0.2s ease;
 }
 
-.login {
-  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.27, 1.55);
+.auth-back:hover {
+  color: #fff;
 }
