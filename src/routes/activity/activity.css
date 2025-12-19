@@ -1,0 +1,182 @@
+/* =========================
+ * 页面整体
+ * ========================= */
+.activity-page {
+  padding: 48px 32px;
+  color: #e5e7eb;
+  background: linear-gradient(180deg, #0b0e14, #0f172a);
+  min-height: 100vh;
+  font-family: ui-sans-serif, system-ui, -apple-system;
+}
+
+.activity-page h1 {
+  font-size: 28px;
+  font-weight: 600;
+  margin-bottom: 24px;
+  letter-spacing: 0.5px;
+}
+
+/* =========================
+ * 部门切换
+ * ========================= */
+.dept-switch {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.dept-switch button {
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid #334155;
+  background: transparent;
+  color: #cbd5f5;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.dept-switch button:hover {
+  background: rgba(148, 163, 184, 0.1);
+}
+
+.dept-switch button.active {
+  background: #6366f1;
+  border-color: #6366f1;
+  color: white;
+}
+
+/* =========================
+ * 时间控制
+ * ========================= */
+.time-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 28px;
+  color: #94a3b8;
+}
+
+.time-controls button {
+  background: #020617;
+  border: 1px solid #1e293b;
+  color: #c7d2fe;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.time-controls button:hover {
+  background: #020617;
+  border-color: #6366f1;
+}
+
+.center-date {
+  font-family: monospace;
+  font-size: 14px;
+  opacity: 0.9;
+}
+
+/* =========================
+ * 时间轴容器
+ * ========================= */
+.timeline-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #020617;
+  border: 1px solid #1e293b;
+  padding: 48px 0;
+}
+
+/* =========================
+ * 时间轴本体（无限横向）
+ * ========================= */
+.timeline {
+  position: relative;
+  height: 120px;
+  transform: translateX(50%);
+}
+
+/* =========================
+ * 中心吸附线
+ * ========================= */
+.center-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #6366f1,
+    transparent
+  );
+  box-shadow: 0 0 12px rgba(99, 102, 241, 0.6);
+  z-index: 10;
+}
+
+/* =========================
+ * 活动事件
+ * ========================= */
+.event {
+  position: absolute;
+  top: 40px;
+  transform: translateX(-50%);
+  min-width: 160px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(30, 41, 59, 0.85);
+  border: 1px solid #334155;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.event:hover {
+  transform: translateX(-50%) translateY(-4px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55);
+  background: rgba(51, 65, 85, 0.95);
+}
+
+.event strong {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 4px;
+  color: #f8fafc;
+}
+
+.event time {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.event .dept {
+  display: block;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+/* =========================
+ * 部门颜色区分（微弱）
+ * ========================= */
+.event.策划部 {
+  border-left: 4px solid #22c55e;
+}
+
+.event.技术部 {
+  border-left: 4px solid #3b82f6;
+}
+
+.event.宣传部 {
+  border-left: 4px solid #eab308;
+}
+
+.event.演艺部 {
+  border-left: 4px solid #ec4899;
+}

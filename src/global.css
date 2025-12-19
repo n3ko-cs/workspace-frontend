@@ -45,3 +45,12 @@ body {
   line-height: inherit;
 }
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: #0b0e14; /* 和 Hero / Activity 一致 */
+  color-scheme: dark;
+}
+
+

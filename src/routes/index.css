@@ -1,0 +1,129 @@
+/* ================= Base ================= */
+.container {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+    sans-serif;
+  color: #fff;
+  background: #0b0e14;
+}
+
+/* ================= Hero ================= */
+.hero {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  padding: 2rem;
+}
+
+.hero-title {
+  font-size: 3rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.hero-subtitle {
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  opacity: 0.85;
+}
+
+.hero-desc {
+  margin-top: 1.5rem;
+  font-size: 1rem;
+  opacity: 0.7;
+}
+
+.hero-actions {
+  margin-top: 2.5rem;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* ================= Buttons ================= */
+.btn {
+  padding: 0.7rem 1.8rem;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.btn.primary {
+  background: linear-gradient(135deg, #ff6ec7, #7f7cff);
+  color: #fff;
+}
+
+.btn.primary:hover {
+  transform: translateY(-2px);
+}
+
+.btn.ghost {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  color: #fff;
+}
+
+.btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ================= Hero Background ================= */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 30%, rgba(255, 110, 199, 0.25), transparent 40%),
+    radial-gradient(circle at 70% 40%, rgba(127, 124, 255, 0.25), transparent 45%),
+    #0b0e14;
+}
+
+/* ================= Departments ================= */
+.departments {
+  padding: 5rem 2rem;
+  background: #0f1320;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  margin-bottom: 3rem;
+}
+
+.dept-grid {
+  max-width: 1000px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.dept-card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 16px;
+  padding: 2rem;
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.dept-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.dept-card h3 {
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.dept-card p {
+  font-size: 0.95rem;
+  opacity: 0.75;
+}
