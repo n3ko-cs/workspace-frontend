@@ -57,7 +57,7 @@ export const Navbar = component$(() => {
         </li>
 
         <li>
-          <Link href="/member">成员中心</Link>
+          <Link href="/activity">活动中心</Link>
         </li>
         <li>
           <Link href="/auth">登录 / 注册</Link>
