@@ -60,7 +60,7 @@ export default component$(() => {
         <GlobalFooter
           clubName="XXX 动漫社"
           description="热爱二次元 · 创作 · 技术 · 舞台"
-          contactExtra="QQ群：123456789"
+          contactExtra="百团大战为社团唯一招新渠道"
         />
       )}
     </div>

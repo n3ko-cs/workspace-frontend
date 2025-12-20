@@ -1,0 +1,177 @@
+/* ===============================
+   Department VN Module (Anime Style)
+   =============================== */
+
+.dept-module {
+  position: relative;
+  min-height: 100vh;
+  padding: 48px 32px 64px;
+  font-family: 'Noto Sans JP', 'PingFang SC', 'Hiragino Sans', sans-serif;
+  overflow-x: hidden;
+}
+
+/* ===== 标题 ===== */
+
+.dept-title {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.dept-title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -10px;
+  width: 120px;
+  height: 2px;
+  background: currentColor;
+  opacity: 0.6;
+}
+
+/* ===== 时间轴容器 ===== */
+
+.dept-timeline {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 960px;
+  margin: 0 auto;
+  position: relative;
+}
+
+/* ===== VN 节点 ===== */
+
+.vn-node {
+  position: relative;
+  padding: 14px 16px 16px;
+  border-radius: 14px;
+  cursor: pointer;
+
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.15);
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease;
+}
+
+.vn-node strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  margin-bottom: 6px;
+}
+
+.vn-node small {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* 悬浮时的「Galgame 高亮」感 */
+.vn-node:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow:
+    0 12px 28px rgba(0, 0, 0, 0.35),
+    0 0 18px rgba(255, 255, 255, 0.35);
+}
+
+/* ===== 锁定状态 ===== */
+
+.vn-node.locked {
+  cursor: not-allowed;
+  opacity: 0.45;
+  filter: grayscale(0.6);
+}
+
+.vn-node.locked::after {
+  content: '🔒';
+  position: absolute;
+  top: 10px;
+  right: 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.vn-node.locked:hover {
+  transform: none;
+  box-shadow:
+    0 6px 16px rgba(0, 0, 0, 0.25);
+}
+
+/* ===== VN Overlay（剧情弹层） ===== */
+
+.vn-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+
+  background:
+    radial-gradient(
+      circle at center,
+      rgba(0, 0, 0, 0.35),
+      rgba(0, 0, 0, 0.75)
+    );
+
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  animation: vn-fade-in 0.3s ease;
+}
+
+@keyframes vn-fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* ===== VN Panel Wrapper ===== */
+
+.vn-panel-wrapper {
+  width: min(920px, 92vw);
+  max-height: 86vh;
+  padding: 24px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.22),
+    rgba(255, 255, 255, 0.12)
+  );
+
+  border-radius: 20px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+
+  animation: vn-panel-pop 0.35s cubic-bezier(0.2, 0.8, 0.2, 1);
+
+  overflow: hidden;
+}
+
+@keyframes vn-panel-pop {
+  from {
+    transform: translateY(20px) scale(0.96);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
