@@ -1,51 +1,51 @@
-// ================================
 // src/routes/member/index.tsx
-// ================================
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
+import type { MemberInfo } from "~/types/member";
+import { ROLE_PERMISSIONS } from "~/types/member";
 
-export const useMemberInfo = routeLoader$(async () => {
-  // mock：实际应从 session / cookie 中读取
+export const useMemberInfo = routeLoader$<MemberInfo>(async ({ cookie }) => {
+  // TODO: 从 cookie / session 中解析
+  // const session = cookie.get("session")?.value;
+
   return {
     username: "Alice",
     department: "技术部",
-    role: "部长", // 部长 | 普通社员 | 老资历
+    role: "部长",
   };
 });
 
 export default component$(() => {
   const member = useMemberInfo();
-
-  const rolePermissions: Record<string, string[]> = {
-    部长: ["管理成员", "审批活动", "修改部门信息"],
-    老资历: ["参与决策", "指导新人"],
-    普通社员: ["参与活动"],
-  };
+  const permissions = ROLE_PERMISSIONS[member.value.role];
 
   return (
     <main class="member-page">
+      <header class="member-header">
         <h1>成员中心</h1>
-        <p>
-          <strong>用户名：</strong>
-          {member.value.username}
-        </p>
-        <p>
-          <strong>所属部门：</strong>
-          {member.value.department}
-        </p>
-        <p>
-          <strong>身份权限：</strong>
-          {member.value.role}
-        </p>
+        <span class="member-role">{member.value.role}</span>
+      </header>
 
-        <section class="dept">
-          <h2>你拥有的权限</h2>
-          <ul>
-            {rolePermissions[member.value.role].map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
-        </section>
+      <section class="member-card">
+        <Info label="用户名" value={member.value.username} />
+        <Info label="所属部门" value={member.value.department} />
+      </section>
+
+      <section class="permission-card">
+        <h2>你拥有的权限</h2>
+        <ul>
+          {permissions.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+      </section>
     </main>
   );
 });
+
+const Info = component$<{ label: string; value: string }>(({ label, value }) => (
+  <p>
+    <strong>{label}：</strong>
+    <span>{value}</span>
+  </p>
+));
